@@ -58,7 +58,7 @@ module.exports = {
         res.status(404).json({ message: 'No thought found with this id!' });
       }
 
-      res.json({ message: 'Thought updated! });
+      res.json({ message: 'Thought updated!' });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -82,9 +82,10 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: 'No user found with that ID' })
       }
-      
+
       res.json({ message: 'Thought deleted!' });
     } catch (err) {
       res.status(500).json(err);
     }
   },
+};

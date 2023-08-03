@@ -1,29 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
-// // Aggregate function to get the number of users overall
-// const headCount = async () => {
-//   const numberOfUsers = await User.aggregate()
-//     .count('userCount');
-//   return numberOfUsers;
-// }
-
-// // Aggregate function for getting the overall grade using $avg
-// const grade = async (studentId) =>
-//   Student.aggregate([
-//     // only include the given student by using $match
-//     { $match: { _id: new ObjectId(studentId) } },
-//     {
-//       $unwind: '$assignments',
-//     },
-//     {
-//       $group: {
-//         _id: new ObjectId(studentId),
-//         overallGrade: { $avg: '$assignments.score' },
-//       },
-//     },
-//   ]);
-
 module.exports = {
   // Get all users
   async getUsers(req, res) {
@@ -33,19 +10,8 @@ module.exports = {
     } catch (err) {
         res.status(500).json(err);
     }
-
-
-    // //   const userObj = {
-    // //     users,
-    // //     headCount: await headCount(),
-    // //   };
-
-    //   res.json(userObj);
-    // } catch (err) {
-    //   console.log(err);
-    //   return res.status(500).json(err);
-    // }
   },
+
   // Get a single user
   async getSingleUser(req, res) {
     try {
@@ -57,12 +23,7 @@ module.exports = {
       }
 
       res.json(user);
-        
-    //     { ,
-    //     grade: await grade(req.params.studentId),
-    //   });
     } catch (err) {
-    //   console.log(err);
       return res.status(500).json(err);
     }
   },
@@ -94,11 +55,7 @@ module.exports = {
     }
 },
 
-
-  
-
-
-  // Delete a user and remove them from the thought
+  // Delete a user and remove them from thought
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
@@ -110,12 +67,6 @@ module.exports = {
       const though = await Thought.deletemany(
         { username: user.username });
 
-    //   if (!course) {
-    //     return res.status(404).json({
-    //       message: 'Student deleted, but no courses found',
-    //     });
-    //   }
-
       res.json({ message: 'User successfully deleted' });
     } catch (err) {
       console.log(err);
@@ -125,9 +76,6 @@ module.exports = {
 
   // Add an friend to a user
   async addfriend(req, res) {
-    // console.log('You are adding an assignment');
-    // console.log(req.body);
-
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
