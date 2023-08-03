@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
-const assignmentSchema = require('./Assignment');
 
-// Schema to create Student model
-const studentSchema = new Schema(
+// Schema to create User model
+const userSchema = new Schema(
   {
     User: {
       type: String,
@@ -13,8 +12,13 @@ const studentSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
-      match: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2, 7}$/, 'Please enter a valid email address'
+      validate: {
+        validator: function (v) {
+          return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2, 7}$/;
+        },
+        
+      }
+      
     },
     
     thoughts: [{
