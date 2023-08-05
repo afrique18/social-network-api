@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 // Schema to create User model
 const userSchema = new Schema(
   {
-    User: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -16,20 +16,20 @@ const userSchema = new Schema(
         validator: function (v) {
           return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2, 7}$/;
         },
-        
+
       }
-      
+
     },
-    
+
     thoughts: [{
-        type: Schema.Types.ObjectId,
-        ref: "Thought"
+      type: Schema.Types.ObjectId,
+      ref: "Thought"
     }
 
     ],
-    friend: [{
-        type: Schema.Types.ObjectId,
-        ref: "User"
+    friends: [{
+      type: Schema.Types.ObjectId,
+      ref: "User"
     }
     ],
   },
@@ -40,8 +40,8 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.virtual('friendCount').get(function (){
-    return this.friend.length;
+userSchema.virtual('friendCount').get(function () {
+  return this.friend.length;
 })
 
 const User = model('user', userSchema);
