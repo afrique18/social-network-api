@@ -58,13 +58,13 @@ module.exports = {
   // Delete a user and remove them from thought
   async deleteUser(req, res) {
     try {
-      const user = await User.findOneAndRemove({ _id: req.params.userId });
+      const user = await User.findByIdAndRemove({ _id: req.params.userId });
 
       if (!user) {
         return res.status(404).json({ message: 'No such user exists' });
       }
 
-      const though = await Thought.deletemany(
+      const thought = await Thought.deleteMany(
         { username: user.username });
 
       res.json({ message: 'User successfully deleted' });
@@ -79,7 +79,7 @@ module.exports = {
     try {
       const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { friends: req.friendId } },
+        { $addToSet: { friends: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -89,7 +89,7 @@ module.exports = {
           .json({ message: 'No user found with that ID :(' });
       }
 
-      res.json(student);
+      res.json(user);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -99,7 +99,7 @@ module.exports = {
   async removeFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.params.UserId },
+        { _id: req.params.userId },
         { $pull: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       );
