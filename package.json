@@ -1,0 +1,26 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "Nodejs CLI Mongoose Insomnia to test routes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afrique18/social-network-api.git#main"
+  },
+  "keywords": [
+    "Mongoose"
+  ],
+  "author": "Varney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/afrique18/social-network-api/issues"
+  },
+  "homepage": "https://github.com/afrique18/social-network-api/tree/main#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2"
+  }
+}
