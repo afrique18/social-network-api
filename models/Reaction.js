@@ -14,13 +14,15 @@ const reactionSchema = new Schema(
     },
     createdOn: {
       type: Date,
-      default: dateNow,
-      get: formatDate(date),
+      default: Date.now,
+      get: date => formatDate(date),
     },
     username: {
       type: String,
       required: true,
     },
+  },
+  {
 
     toJSON: {
       getters: true,

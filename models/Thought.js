@@ -14,8 +14,8 @@ const thoughtSchema = new Schema(
     },
     createdOn: {
       type: Date,
-      default: dateNow,
-      get: formatDate(date),
+      default: Date.now,
+      get : date => formatDate(date),
     },
     username: {
       type: String,
