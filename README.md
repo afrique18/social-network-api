@@ -6,7 +6,12 @@ This project is an API for a social network web application that allows users to
 
 ## Technologies Used
 
-This web application was created using MongoDB, Mongoose, JavaScript, Express.js, and Node.js
+This web application was created using:
+- MongoDB
+- Mongoose
+- JavaScript
+- Express.js
+- Node.js
 
 ## Installation
 
@@ -21,8 +26,8 @@ This project is licensed under the MIT License.
 
 # Contributors
 
-Myro Joy Lee, 
-Sangeetha Kaliaperumal 
+- Myro Joy Lee
+- Sangeetha Kaliaperumal 
 
 ## Questions
 
