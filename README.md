@@ -21,7 +21,7 @@ This project is licensed under the MIT License.
 
 # Contributors
 
-Myro Joy Lee
+Myro Joy Lee, 
 Sangeetha Kaliaperumal 
 
 ## Questions
